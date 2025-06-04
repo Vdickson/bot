@@ -56,22 +56,6 @@ if not SUPPORT_USERNAME: missing_vars.append("SUPPORT_USERNAME")
 if not SUPPORT_CHANNEL_ID: missing_vars.append("SUPPORT_CHANNEL_ID")
 if not ADMIN_CHAT_ID: missing_vars.append("ADMIN_CHAT_ID")
 
-if missing_vars:
-    # Provide detailed troubleshooting help
-    print(f"CRITICAL: Missing environment variables: {', '.join(missing_vars)}")
-    print("\nTROUBLESHOOTING GUIDE:")
-    print("1. Create a .env file in your project directory")
-    print("2. Add the required variables in this format:")
-    print('   BOT_TOKEN="your_token_here"')
-    print('   SUPPORT_USERNAME="your_username_here"')
-    print("3. Ensure the .env file is in the same directory as your script")
-    print("4. Verify variable names match exactly (case-sensitive)")
-    print("\nExample .env file content:")
-    print('BOT_TOKEN="7474373357:AAFe1f4SpA-ocsqiaBWV7PYA6EkD0-_5qRI"')
-    print('SUPPORT_USERNAME="Firekirin77777"')
-    print('SUPPORT_CHANNEL_ID="-1002416775295"')
-    print('ADMIN_CHAT_ID="-1002416775295"')
-    raise EnvironmentError("Missing critical environment variables")
 
 # Convert and validate numeric IDs
 try:

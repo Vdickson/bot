@@ -4358,3 +4358,421 @@ telegram.error.BadRequest: Message is not modified: specified new message conten
 2025-06-04 07:06:43,499 | INFO | __main__ | New user started: 5644080434
 2025-06-04 07:06:44,408 | INFO | __main__ | Sent new user notification for 5644080434
 2025-06-04 07:06:52,150 | INFO | __main__ | Scam report started by Clare
+2025-06-04 07:26:27,225 | INFO | __main__ | 🚀 FireKirin bot starting...
+2025-06-04 07:26:27,238 | INFO | __main__ | ✅ Bot setup complete. Starting polling...
+2025-06-04 07:27:35,198 | ERROR | __main__ | Exception: Traceback (most recent call last):
+  File "C:\Users\Eng. Dickson\Documents\PROJECTS\bot\.venv\Lib\site-packages\telegram\ext\_utils\networkloop.py", line 115, in network_retry_loop
+    if not await do_action():
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\Eng. Dickson\Documents\PROJECTS\bot\.venv\Lib\site-packages\telegram\ext\_utils\networkloop.py", line 108, in do_action
+    return action_cb_task.result()
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Eng. Dickson\Documents\PROJECTS\bot\.venv\Lib\site-packages\telegram\ext\_updater.py", line 335, in polling_action_cb
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Eng. Dickson\Documents\PROJECTS\bot\.venv\Lib\site-packages\telegram\ext\_extbot.py", line 669, in get_updates
+    updates = await super().get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Eng. Dickson\Documents\PROJECTS\bot\.venv\Lib\site-packages\telegram\_bot.py", line 4601, in get_updates
+    await self._post(
+  File "C:\Users\Eng. Dickson\Documents\PROJECTS\bot\.venv\Lib\site-packages\telegram\_bot.py", line 697, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Eng. Dickson\Documents\PROJECTS\bot\.venv\Lib\site-packages\telegram\ext\_extbot.py", line 369, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Eng. Dickson\Documents\PROJECTS\bot\.venv\Lib\site-packages\telegram\_bot.py", line 726, in _do_post
+    result = await request.post(
+             ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Eng. Dickson\Documents\PROJECTS\bot\.venv\Lib\site-packages\telegram\request\_baserequest.py", line 197, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Eng. Dickson\Documents\PROJECTS\bot\.venv\Lib\site-packages\telegram\request\_baserequest.py", line 355, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+
+2025-06-04 07:27:35,872 | INFO | __main__ | Sent error notification to admin group
+2025-06-04 07:27:40,510 | ERROR | __main__ | Exception: Traceback (most recent call last):
+  File "C:\Users\Eng. Dickson\Documents\PROJECTS\bot\.venv\Lib\site-packages\telegram\ext\_utils\networkloop.py", line 115, in network_retry_loop
+    if not await do_action():
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\Eng. Dickson\Documents\PROJECTS\bot\.venv\Lib\site-packages\telegram\ext\_utils\networkloop.py", line 108, in do_action
+    return action_cb_task.result()
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Eng. Dickson\Documents\PROJECTS\bot\.venv\Lib\site-packages\telegram\ext\_updater.py", line 335, in polling_action_cb
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Eng. Dickson\Documents\PROJECTS\bot\.venv\Lib\site-packages\telegram\ext\_extbot.py", line 669, in get_updates
+    updates = await super().get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Eng. Dickson\Documents\PROJECTS\bot\.venv\Lib\site-packages\telegram\_bot.py", line 4601, in get_updates
+    await self._post(
+  File "C:\Users\Eng. Dickson\Documents\PROJECTS\bot\.venv\Lib\site-packages\telegram\_bot.py", line 697, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Eng. Dickson\Documents\PROJECTS\bot\.venv\Lib\site-packages\telegram\ext\_extbot.py", line 369, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Eng. Dickson\Documents\PROJECTS\bot\.venv\Lib\site-packages\telegram\_bot.py", line 726, in _do_post
+    result = await request.post(
+             ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Eng. Dickson\Documents\PROJECTS\bot\.venv\Lib\site-packages\telegram\request\_baserequest.py", line 197, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Eng. Dickson\Documents\PROJECTS\bot\.venv\Lib\site-packages\telegram\request\_baserequest.py", line 355, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+
+2025-06-04 07:27:40,844 | INFO | __main__ | Sent error notification to admin group
+2025-06-04 07:27:46,845 | ERROR | __main__ | Exception: Traceback (most recent call last):
+  File "C:\Users\Eng. Dickson\Documents\PROJECTS\bot\.venv\Lib\site-packages\telegram\ext\_utils\networkloop.py", line 115, in network_retry_loop
+    if not await do_action():
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\Eng. Dickson\Documents\PROJECTS\bot\.venv\Lib\site-packages\telegram\ext\_utils\networkloop.py", line 108, in do_action
+    return action_cb_task.result()
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Eng. Dickson\Documents\PROJECTS\bot\.venv\Lib\site-packages\telegram\ext\_updater.py", line 335, in polling_action_cb
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Eng. Dickson\Documents\PROJECTS\bot\.venv\Lib\site-packages\telegram\ext\_extbot.py", line 669, in get_updates
+    updates = await super().get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Eng. Dickson\Documents\PROJECTS\bot\.venv\Lib\site-packages\telegram\_bot.py", line 4601, in get_updates
+    await self._post(
+  File "C:\Users\Eng. Dickson\Documents\PROJECTS\bot\.venv\Lib\site-packages\telegram\_bot.py", line 697, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Eng. Dickson\Documents\PROJECTS\bot\.venv\Lib\site-packages\telegram\ext\_extbot.py", line 369, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Eng. Dickson\Documents\PROJECTS\bot\.venv\Lib\site-packages\telegram\_bot.py", line 726, in _do_post
+    result = await request.post(
+             ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Eng. Dickson\Documents\PROJECTS\bot\.venv\Lib\site-packages\telegram\request\_baserequest.py", line 197, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Eng. Dickson\Documents\PROJECTS\bot\.venv\Lib\site-packages\telegram\request\_baserequest.py", line 355, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+
+2025-06-04 07:27:47,497 | INFO | __main__ | Sent error notification to admin group
+2025-06-04 07:27:54,666 | ERROR | __main__ | Exception: Traceback (most recent call last):
+  File "C:\Users\Eng. Dickson\Documents\PROJECTS\bot\.venv\Lib\site-packages\telegram\ext\_utils\networkloop.py", line 115, in network_retry_loop
+    if not await do_action():
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\Eng. Dickson\Documents\PROJECTS\bot\.venv\Lib\site-packages\telegram\ext\_utils\networkloop.py", line 108, in do_action
+    return action_cb_task.result()
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Eng. Dickson\Documents\PROJECTS\bot\.venv\Lib\site-packages\telegram\ext\_updater.py", line 335, in polling_action_cb
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Eng. Dickson\Documents\PROJECTS\bot\.venv\Lib\site-packages\telegram\ext\_extbot.py", line 669, in get_updates
+    updates = await super().get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Eng. Dickson\Documents\PROJECTS\bot\.venv\Lib\site-packages\telegram\_bot.py", line 4601, in get_updates
+    await self._post(
+  File "C:\Users\Eng. Dickson\Documents\PROJECTS\bot\.venv\Lib\site-packages\telegram\_bot.py", line 697, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Eng. Dickson\Documents\PROJECTS\bot\.venv\Lib\site-packages\telegram\ext\_extbot.py", line 369, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Eng. Dickson\Documents\PROJECTS\bot\.venv\Lib\site-packages\telegram\_bot.py", line 726, in _do_post
+    result = await request.post(
+             ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Eng. Dickson\Documents\PROJECTS\bot\.venv\Lib\site-packages\telegram\request\_baserequest.py", line 197, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Eng. Dickson\Documents\PROJECTS\bot\.venv\Lib\site-packages\telegram\request\_baserequest.py", line 355, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+
+2025-06-04 07:27:55,298 | INFO | __main__ | Sent error notification to admin group
+2025-06-04 07:28:01,756 | ERROR | __main__ | Exception: Traceback (most recent call last):
+  File "C:\Users\Eng. Dickson\Documents\PROJECTS\bot\.venv\Lib\site-packages\telegram\ext\_utils\networkloop.py", line 115, in network_retry_loop
+    if not await do_action():
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\Eng. Dickson\Documents\PROJECTS\bot\.venv\Lib\site-packages\telegram\ext\_utils\networkloop.py", line 108, in do_action
+    return action_cb_task.result()
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Eng. Dickson\Documents\PROJECTS\bot\.venv\Lib\site-packages\telegram\ext\_updater.py", line 335, in polling_action_cb
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Eng. Dickson\Documents\PROJECTS\bot\.venv\Lib\site-packages\telegram\ext\_extbot.py", line 669, in get_updates
+    updates = await super().get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Eng. Dickson\Documents\PROJECTS\bot\.venv\Lib\site-packages\telegram\_bot.py", line 4601, in get_updates
+    await self._post(
+  File "C:\Users\Eng. Dickson\Documents\PROJECTS\bot\.venv\Lib\site-packages\telegram\_bot.py", line 697, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Eng. Dickson\Documents\PROJECTS\bot\.venv\Lib\site-packages\telegram\ext\_extbot.py", line 369, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Eng. Dickson\Documents\PROJECTS\bot\.venv\Lib\site-packages\telegram\_bot.py", line 726, in _do_post
+    result = await request.post(
+             ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Eng. Dickson\Documents\PROJECTS\bot\.venv\Lib\site-packages\telegram\request\_baserequest.py", line 197, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Eng. Dickson\Documents\PROJECTS\bot\.venv\Lib\site-packages\telegram\request\_baserequest.py", line 355, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+
+2025-06-04 07:28:02,445 | INFO | __main__ | Sent error notification to admin group
+2025-06-04 07:28:12,847 | ERROR | __main__ | Exception: Traceback (most recent call last):
+  File "C:\Users\Eng. Dickson\Documents\PROJECTS\bot\.venv\Lib\site-packages\telegram\ext\_utils\networkloop.py", line 115, in network_retry_loop
+    if not await do_action():
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\Eng. Dickson\Documents\PROJECTS\bot\.venv\Lib\site-packages\telegram\ext\_utils\networkloop.py", line 108, in do_action
+    return action_cb_task.result()
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Eng. Dickson\Documents\PROJECTS\bot\.venv\Lib\site-packages\telegram\ext\_updater.py", line 335, in polling_action_cb
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Eng. Dickson\Documents\PROJECTS\bot\.venv\Lib\site-packages\telegram\ext\_extbot.py", line 669, in get_updates
+    updates = await super().get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Eng. Dickson\Documents\PROJECTS\bot\.venv\Lib\site-packages\telegram\_bot.py", line 4601, in get_updates
+    await self._post(
+  File "C:\Users\Eng. Dickson\Documents\PROJECTS\bot\.venv\Lib\site-packages\telegram\_bot.py", line 697, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Eng. Dickson\Documents\PROJECTS\bot\.venv\Lib\site-packages\telegram\ext\_extbot.py", line 369, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Eng. Dickson\Documents\PROJECTS\bot\.venv\Lib\site-packages\telegram\_bot.py", line 726, in _do_post
+    result = await request.post(
+             ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Eng. Dickson\Documents\PROJECTS\bot\.venv\Lib\site-packages\telegram\request\_baserequest.py", line 197, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Eng. Dickson\Documents\PROJECTS\bot\.venv\Lib\site-packages\telegram\request\_baserequest.py", line 355, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+
+2025-06-04 07:28:13,499 | INFO | __main__ | Sent error notification to admin group
+2025-06-04 07:28:29,085 | ERROR | __main__ | Exception: Traceback (most recent call last):
+  File "C:\Users\Eng. Dickson\Documents\PROJECTS\bot\.venv\Lib\site-packages\telegram\ext\_utils\networkloop.py", line 115, in network_retry_loop
+    if not await do_action():
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\Eng. Dickson\Documents\PROJECTS\bot\.venv\Lib\site-packages\telegram\ext\_utils\networkloop.py", line 108, in do_action
+    return action_cb_task.result()
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Eng. Dickson\Documents\PROJECTS\bot\.venv\Lib\site-packages\telegram\ext\_updater.py", line 335, in polling_action_cb
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Eng. Dickson\Documents\PROJECTS\bot\.venv\Lib\site-packages\telegram\ext\_extbot.py", line 669, in get_updates
+    updates = await super().get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Eng. Dickson\Documents\PROJECTS\bot\.venv\Lib\site-packages\telegram\_bot.py", line 4601, in get_updates
+    await self._post(
+  File "C:\Users\Eng. Dickson\Documents\PROJECTS\bot\.venv\Lib\site-packages\telegram\_bot.py", line 697, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Eng. Dickson\Documents\PROJECTS\bot\.venv\Lib\site-packages\telegram\ext\_extbot.py", line 369, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Eng. Dickson\Documents\PROJECTS\bot\.venv\Lib\site-packages\telegram\_bot.py", line 726, in _do_post
+    result = await request.post(
+             ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Eng. Dickson\Documents\PROJECTS\bot\.venv\Lib\site-packages\telegram\request\_baserequest.py", line 197, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Eng. Dickson\Documents\PROJECTS\bot\.venv\Lib\site-packages\telegram\request\_baserequest.py", line 355, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+
+2025-06-04 07:28:29,735 | INFO | __main__ | Sent error notification to admin group
+2025-06-04 07:28:45,122 | ERROR | __main__ | Exception: Traceback (most recent call last):
+  File "C:\Users\Eng. Dickson\Documents\PROJECTS\bot\.venv\Lib\site-packages\telegram\ext\_utils\networkloop.py", line 115, in network_retry_loop
+    if not await do_action():
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\Eng. Dickson\Documents\PROJECTS\bot\.venv\Lib\site-packages\telegram\ext\_utils\networkloop.py", line 108, in do_action
+    return action_cb_task.result()
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Eng. Dickson\Documents\PROJECTS\bot\.venv\Lib\site-packages\telegram\ext\_updater.py", line 335, in polling_action_cb
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Eng. Dickson\Documents\PROJECTS\bot\.venv\Lib\site-packages\telegram\ext\_extbot.py", line 669, in get_updates
+    updates = await super().get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Eng. Dickson\Documents\PROJECTS\bot\.venv\Lib\site-packages\telegram\_bot.py", line 4601, in get_updates
+    await self._post(
+  File "C:\Users\Eng. Dickson\Documents\PROJECTS\bot\.venv\Lib\site-packages\telegram\_bot.py", line 697, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Eng. Dickson\Documents\PROJECTS\bot\.venv\Lib\site-packages\telegram\ext\_extbot.py", line 369, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Eng. Dickson\Documents\PROJECTS\bot\.venv\Lib\site-packages\telegram\_bot.py", line 726, in _do_post
+    result = await request.post(
+             ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Eng. Dickson\Documents\PROJECTS\bot\.venv\Lib\site-packages\telegram\request\_baserequest.py", line 197, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Eng. Dickson\Documents\PROJECTS\bot\.venv\Lib\site-packages\telegram\request\_baserequest.py", line 355, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+
+2025-06-04 07:28:45,770 | INFO | __main__ | Sent error notification to admin group
+2025-06-04 07:29:06,909 | ERROR | __main__ | Exception: Traceback (most recent call last):
+  File "C:\Users\Eng. Dickson\Documents\PROJECTS\bot\.venv\Lib\site-packages\telegram\ext\_utils\networkloop.py", line 115, in network_retry_loop
+    if not await do_action():
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\Eng. Dickson\Documents\PROJECTS\bot\.venv\Lib\site-packages\telegram\ext\_utils\networkloop.py", line 108, in do_action
+    return action_cb_task.result()
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Eng. Dickson\Documents\PROJECTS\bot\.venv\Lib\site-packages\telegram\ext\_updater.py", line 335, in polling_action_cb
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Eng. Dickson\Documents\PROJECTS\bot\.venv\Lib\site-packages\telegram\ext\_extbot.py", line 669, in get_updates
+    updates = await super().get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Eng. Dickson\Documents\PROJECTS\bot\.venv\Lib\site-packages\telegram\_bot.py", line 4601, in get_updates
+    await self._post(
+  File "C:\Users\Eng. Dickson\Documents\PROJECTS\bot\.venv\Lib\site-packages\telegram\_bot.py", line 697, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Eng. Dickson\Documents\PROJECTS\bot\.venv\Lib\site-packages\telegram\ext\_extbot.py", line 369, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Eng. Dickson\Documents\PROJECTS\bot\.venv\Lib\site-packages\telegram\_bot.py", line 726, in _do_post
+    result = await request.post(
+             ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Eng. Dickson\Documents\PROJECTS\bot\.venv\Lib\site-packages\telegram\request\_baserequest.py", line 197, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Eng. Dickson\Documents\PROJECTS\bot\.venv\Lib\site-packages\telegram\request\_baserequest.py", line 355, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+
+2025-06-04 07:29:07,555 | INFO | __main__ | Sent error notification to admin group
+2025-06-04 07:29:37,183 | ERROR | __main__ | Exception: Traceback (most recent call last):
+  File "C:\Users\Eng. Dickson\Documents\PROJECTS\bot\.venv\Lib\site-packages\telegram\ext\_utils\networkloop.py", line 115, in network_retry_loop
+    if not await do_action():
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\Eng. Dickson\Documents\PROJECTS\bot\.venv\Lib\site-packages\telegram\ext\_utils\networkloop.py", line 108, in do_action
+    return action_cb_task.result()
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Eng. Dickson\Documents\PROJECTS\bot\.venv\Lib\site-packages\telegram\ext\_updater.py", line 335, in polling_action_cb
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Eng. Dickson\Documents\PROJECTS\bot\.venv\Lib\site-packages\telegram\ext\_extbot.py", line 669, in get_updates
+    updates = await super().get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Eng. Dickson\Documents\PROJECTS\bot\.venv\Lib\site-packages\telegram\_bot.py", line 4601, in get_updates
+    await self._post(
+  File "C:\Users\Eng. Dickson\Documents\PROJECTS\bot\.venv\Lib\site-packages\telegram\_bot.py", line 697, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Eng. Dickson\Documents\PROJECTS\bot\.venv\Lib\site-packages\telegram\ext\_extbot.py", line 369, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Eng. Dickson\Documents\PROJECTS\bot\.venv\Lib\site-packages\telegram\_bot.py", line 726, in _do_post
+    result = await request.post(
+             ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Eng. Dickson\Documents\PROJECTS\bot\.venv\Lib\site-packages\telegram\request\_baserequest.py", line 197, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Eng. Dickson\Documents\PROJECTS\bot\.venv\Lib\site-packages\telegram\request\_baserequest.py", line 355, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+
+2025-06-04 07:29:37,853 | INFO | __main__ | Sent error notification to admin group
+2025-06-04 07:30:11,848 | ERROR | __main__ | Exception: Traceback (most recent call last):
+  File "C:\Users\Eng. Dickson\Documents\PROJECTS\bot\.venv\Lib\site-packages\telegram\ext\_utils\networkloop.py", line 115, in network_retry_loop
+    if not await do_action():
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\Eng. Dickson\Documents\PROJECTS\bot\.venv\Lib\site-packages\telegram\ext\_utils\networkloop.py", line 108, in do_action
+    return action_cb_task.result()
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Eng. Dickson\Documents\PROJECTS\bot\.venv\Lib\site-packages\telegram\ext\_updater.py", line 335, in polling_action_cb
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Eng. Dickson\Documents\PROJECTS\bot\.venv\Lib\site-packages\telegram\ext\_extbot.py", line 669, in get_updates
+    updates = await super().get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Eng. Dickson\Documents\PROJECTS\bot\.venv\Lib\site-packages\telegram\_bot.py", line 4601, in get_updates
+    await self._post(
+  File "C:\Users\Eng. Dickson\Documents\PROJECTS\bot\.venv\Lib\site-packages\telegram\_bot.py", line 697, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Eng. Dickson\Documents\PROJECTS\bot\.venv\Lib\site-packages\telegram\ext\_extbot.py", line 369, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Eng. Dickson\Documents\PROJECTS\bot\.venv\Lib\site-packages\telegram\_bot.py", line 726, in _do_post
+    result = await request.post(
+             ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Eng. Dickson\Documents\PROJECTS\bot\.venv\Lib\site-packages\telegram\request\_baserequest.py", line 197, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Eng. Dickson\Documents\PROJECTS\bot\.venv\Lib\site-packages\telegram\request\_baserequest.py", line 355, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+
+2025-06-04 07:30:12,537 | INFO | __main__ | Sent error notification to admin group
+2025-06-04 07:30:46,534 | ERROR | __main__ | Exception: Traceback (most recent call last):
+  File "C:\Users\Eng. Dickson\Documents\PROJECTS\bot\.venv\Lib\site-packages\telegram\ext\_utils\networkloop.py", line 115, in network_retry_loop
+    if not await do_action():
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\Eng. Dickson\Documents\PROJECTS\bot\.venv\Lib\site-packages\telegram\ext\_utils\networkloop.py", line 108, in do_action
+    return action_cb_task.result()
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Eng. Dickson\Documents\PROJECTS\bot\.venv\Lib\site-packages\telegram\ext\_updater.py", line 335, in polling_action_cb
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Eng. Dickson\Documents\PROJECTS\bot\.venv\Lib\site-packages\telegram\ext\_extbot.py", line 669, in get_updates
+    updates = await super().get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Eng. Dickson\Documents\PROJECTS\bot\.venv\Lib\site-packages\telegram\_bot.py", line 4601, in get_updates
+    await self._post(
+  File "C:\Users\Eng. Dickson\Documents\PROJECTS\bot\.venv\Lib\site-packages\telegram\_bot.py", line 697, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Eng. Dickson\Documents\PROJECTS\bot\.venv\Lib\site-packages\telegram\ext\_extbot.py", line 369, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Eng. Dickson\Documents\PROJECTS\bot\.venv\Lib\site-packages\telegram\_bot.py", line 726, in _do_post
+    result = await request.post(
+             ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Eng. Dickson\Documents\PROJECTS\bot\.venv\Lib\site-packages\telegram\request\_baserequest.py", line 197, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Eng. Dickson\Documents\PROJECTS\bot\.venv\Lib\site-packages\telegram\request\_baserequest.py", line 355, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+
+2025-06-04 07:30:47,192 | INFO | __main__ | Sent error notification to admin group
+2025-06-04 07:31:21,251 | ERROR | __main__ | Exception: Traceback (most recent call last):
+  File "C:\Users\Eng. Dickson\Documents\PROJECTS\bot\.venv\Lib\site-packages\telegram\ext\_utils\networkloop.py", line 115, in network_retry_loop
+    if not await do_action():
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\Eng. Dickson\Documents\PROJECTS\bot\.venv\Lib\site-packages\telegram\ext\_utils\networkloop.py", line 108, in do_action
+    return action_cb_task.result()
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Eng. Dickson\Documents\PROJECTS\bot\.venv\Lib\site-packages\telegram\ext\_updater.py", line 335, in polling_action_cb
+    updates = await self.bot.get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Eng. Dickson\Documents\PROJECTS\bot\.venv\Lib\site-packages\telegram\ext\_extbot.py", line 669, in get_updates
+    updates = await super().get_updates(
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Eng. Dickson\Documents\PROJECTS\bot\.venv\Lib\site-packages\telegram\_bot.py", line 4601, in get_updates
+    await self._post(
+  File "C:\Users\Eng. Dickson\Documents\PROJECTS\bot\.venv\Lib\site-packages\telegram\_bot.py", line 697, in _post
+    return await self._do_post(
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Eng. Dickson\Documents\PROJECTS\bot\.venv\Lib\site-packages\telegram\ext\_extbot.py", line 369, in _do_post
+    return await super()._do_post(
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Eng. Dickson\Documents\PROJECTS\bot\.venv\Lib\site-packages\telegram\_bot.py", line 726, in _do_post
+    result = await request.post(
+             ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Eng. Dickson\Documents\PROJECTS\bot\.venv\Lib\site-packages\telegram\request\_baserequest.py", line 197, in post
+    result = await self._request_wrapper(
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Eng. Dickson\Documents\PROJECTS\bot\.venv\Lib\site-packages\telegram\request\_baserequest.py", line 355, in _request_wrapper
+    raise Conflict(message)
+telegram.error.Conflict: Conflict: terminated by other getUpdates request; make sure that only one bot instance is running
+
+2025-06-04 07:31:21,894 | INFO | __main__ | Sent error notification to admin group
