@@ -1004,16 +1004,14 @@ def main():
     # Schedule promotional messages if job queue exists
     if job_queue:
 
-        # Schedule promotional messages with random intervals
+        # Schedule promotional messages every 8 hours
         job_queue.run_repeating(
             send_promotional_message,
-            job_queue.run_repeating(
-                send_promotional_message,
-                interval=8 * 60 * 60,  # 8 hours
-                first=30
-            )
-
+            interval=datetime.timedelta(hours=8),
+            first=datetime.timedelta(seconds=30)  # optional delay before first run
         )
+
+
 
         # Schedule daily stats report
         job_queue.run_daily(
