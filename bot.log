@@ -1,0 +1,6 @@
+2025-06-03 14:20:44,648 - ERROR - Missing environment variables: BOT_TOKEN, SUPPORT_USERNAME, SUPPORT_CHANNEL_ID, ADMIN_CHAT_ID
+2025-06-03 14:20:44,648 - INFO - Troubleshooting:
+2025-06-03 14:20:44,648 - INFO - 1. Create a .env file with your credentials
+2025-06-03 14:20:44,648 - INFO - 2. Use export BOT_TOKEN='your_token' (Linux/Mac)
+2025-06-03 14:20:44,648 - INFO - 3. Use $env:BOT_TOKEN='your_token' (PowerShell)
+2025-06-03 14:20:44,648 - INFO - 4. For Windows CMD: set BOT_TOKEN=your_token

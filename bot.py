@@ -1,9 +1,10 @@
 import logging
+import logging.handlers
+import os
 import traceback
 import datetime
 import random
 import asyncio
-
 import telegram
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import (
@@ -16,14 +17,77 @@ from telegram.ext import (
     filters,
     JobQueue
 )
+from dotenv import load_dotenv
+
+# Configure logger
+logger = logging.getLogger('my_bot')
+logger.setLevel(logging.DEBUG)
+
+# Rotating file handler
+file_handler = logging.handlers.RotatingFileHandler(
+    'bot.log',
+    maxBytes=10 * 1024 * 1024,  # 10 MB
+    backupCount=5,
+    encoding='utf-8'
+)
+
+# Formatter
+formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
+file_handler.setFormatter(formatter)
+
+# Add handler
+logger.addHandler(file_handler)
 
 # ===== CONFIGURATION =====
-TOKEN = "7474373357:AAGsBUV-_cT16jTlCsnzjoh3SkXZhbejHcY"
-SUPPORT_USERNAME = "Firekirin77777"
-SUPPORT_URL = f"https://t.me/{SUPPORT_USERNAME}"
-SUPPORT_CHANNEL_ID = -1002416775295  # YOUR PRIVATE CHANNEL ID HERE
-ADMIN_CHAT_ID = -1002416775295  # YOUR ADMIN GROUP FOR ERRORS
+# --- LOAD ENVIRONMENT VARIABLES ---
+load_dotenv()  # Load variables from .env file
 
+# --- SECURE ENV CONFIGURATION ---
+TOKEN = os.getenv("BOT_TOKEN")
+SUPPORT_USERNAME = os.getenv("SUPPORT_USERNAME")
+SUPPORT_CHANNEL_ID = os.getenv("SUPPORT_CHANNEL_ID")
+ADMIN_CHAT_ID = os.getenv("ADMIN_CHAT_ID")
+ADMIN_USER_IDS = os.getenv("ADMIN_USER_IDS")
+
+# Validate critical configuration
+missing_vars = []
+if not TOKEN: missing_vars.append("BOT_TOKEN")
+if not SUPPORT_USERNAME: missing_vars.append("SUPPORT_USERNAME")
+if not SUPPORT_CHANNEL_ID: missing_vars.append("SUPPORT_CHANNEL_ID")
+if not ADMIN_CHAT_ID: missing_vars.append("ADMIN_CHAT_ID")
+
+if missing_vars:
+    # Provide detailed troubleshooting help
+    print(f"CRITICAL: Missing environment variables: {', '.join(missing_vars)}")
+    print("\nTROUBLESHOOTING GUIDE:")
+    print("1. Create a .env file in your project directory")
+    print("2. Add the required variables in this format:")
+    print('   BOT_TOKEN="your_token_here"')
+    print('   SUPPORT_USERNAME="your_username_here"')
+    print("3. Ensure the .env file is in the same directory as your script")
+    print("4. Verify variable names match exactly (case-sensitive)")
+    print("\nExample .env file content:")
+    print('BOT_TOKEN="7474373357:AAFe1f4SpA-ocsqiaBWV7PYA6EkD0-_5qRI"')
+    print('SUPPORT_USERNAME="Firekirin77777"')
+    print('SUPPORT_CHANNEL_ID="-1002416775295"')
+    print('ADMIN_CHAT_ID="-1002416775295"')
+    raise EnvironmentError("Missing critical environment variables")
+
+# Convert and validate numeric IDs
+try:
+    SUPPORT_CHANNEL_ID = int(SUPPORT_CHANNEL_ID)
+    ADMIN_CHAT_ID = int(ADMIN_CHAT_ID)
+except ValueError:
+    raise TypeError("SUPPORT_CHANNEL_ID and ADMIN_CHAT_ID must be integers")
+
+# Process admin user IDs
+ADMIN_USER_IDS = [int(x.strip()) for x in ADMIN_USER_IDS.split(",")] if ADMIN_USER_IDS else []
+if not ADMIN_USER_IDS:
+    print("WARNING: No ADMIN_USER_IDS specified - admin commands will be disabled")
+
+SUPPORT_URL = f"https://t.me/{SUPPORT_USERNAME}"
+
+# --- REST OF YOUR CONFIGURATION ---
 # Conversation states
 SCAMMER_INFO, INCIDENT_DETAILS, EVIDENCE, ACCOUNT_INFO = range(4)
 
@@ -31,35 +95,104 @@ SCAMMER_INFO, INCIDENT_DETAILS, EVIDENCE, ACCOUNT_INFO = range(4)
 interacted_users = set()
 started_users = set()
 
-# Configure advanced logging
-logging.basicConfig(
-    format='%(asctime)s | %(levelname)s | %(name)s | %(message)s',
-    level=logging.INFO,
-    datefmt='%Y-%m-%d %H:%M:%S'
-)
+# Configure logging
 logger = logging.getLogger(__name__)
-logger.setLevel(logging.DEBUG)
+logger.setLevel(logging.INFO)
 
-# Add file handler for persistent logs
-file_handler = logging.FileHandler('firekirin_bot.log', encoding='utf-8')
-file_handler.setFormatter(logging.Formatter('%(asctime)s | %(levelname)s | %(name)s | %(message)s'))
+log_file = os.getenv("LOG_FILE", "firekirin_bot.log")
+file_handler = logging.FileHandler(log_file, encoding='utf-8')
+file_handler.setFormatter(logging.Formatter(
+    '%(asctime)s | %(levelname)s | %(name)s | %(message)s'
+))
 logger.addHandler(file_handler)
 
-# Promotional messages
+# Add console logging for development
+console_handler = logging.StreamHandler()
+console_handler.setFormatter(logging.Formatter(
+    '%(asctime)s | %(levelname)s | %(name)s | %(message)s'
+))
+logger.addHandler(console_handler)
+
+
+# --- COMPLETE PROMOTIONAL MESSAGES ---
 PROMOTIONAL_MESSAGES = [
-    "🚨 FLASH OFFER! 40% reload bonus - 12hrs ONLY! Deposit NOW! 🔥\n\n⚡ Instant cashouts! Win → Cash in SECONDS! "
-    "💨\n\n💬 Problems? Questions? Message @Firekirin77777 now!",
-    "🎉 100% SIGNUP BONUS! Double your start + instant cashouts! ⚡\n\n⚡ Instant cashouts! Win → Cash in SECONDS! "
-    "💨\n\n💬 Problems? Need help? Contact @Firekirin77777!",
-    "🛡️ 15% WEEKLY CASHBACK! Lose? We soften the blow! 💸\n\n⚡ Instant cashouts! Win → Cash in SECONDS! 💨\n\n💬 "
-    "Problems? Assistance? DM @Firekirin77777!",
-    "👥 50% REFERRAL BONUS! Earn $$$ when friends play! 🎁\n\nInstant cashouts! Win → Cash in SECONDS! 💨\n\n💬 "
-    "Problems? Support? Message @Firekirin77777!",
-    "🎮 HOT GAMES: Orion Stars, FireKirin, Juwa, Vegas! 🔥\n\n⚡ Instant cashouts! Win → Cash in SECONDS! 💨\n\n💬 "
-    "Problems? Issues? Contact @Firekirin77777!",
-    "🏆 PLAY CONSISTENTLY! Deposit often → Win more → Cashout BIG! 💰\n\n💬 Help? Message @Firekirin77777!"
+    f"🚨 FLASH OFFER! 40% reload bonus - 12hrs ONLY! Deposit NOW! 🔥\n\n"
+    f"⚡ Instant cashouts! Win → Cash in SECONDS! 💨\n\n"
+    f"💬 Problems? Questions? Message @{SUPPORT_USERNAME} now!",
+
+    f"🎉 100% SIGNUP BONUS! Double your start + instant cashouts! ⚡\n\n"
+    f"⚡ Instant cashouts! Win → Cash in SECONDS! 💨\n\n"
+    f"💬 Problems? Need help? Contact @{SUPPORT_USERNAME}!",
+
+    f"🛡️ 15% WEEKLY CASHBACK! Lose? We soften the blow! 💸\n\n"
+    f"⚡ Instant cashouts! Win → Cash in SECONDS! 💨\n\n"
+    f"💬 Problems? Assistance? DM @{SUPPORT_USERNAME}!",
+
+    f"👥 50% REFERRAL BONUS! Earn $$$ when friends play! 🎁\n\n"
+    f"Instant cashouts! Win → Cash in SECONDS! 💨\n\n"
+    f"💬 Problems? Support? Message @{SUPPORT_USERNAME}!",
+
+    f"🎮 HOT GAMES: Orion Stars, FireKirin, Juwa, Vegas! 🔥\n\n"
+    f"⚡ Instant cashouts! Win → Cash in SECONDS! 💨\n\n"
+    f"💬 Problems? Issues? Contact @{SUPPORT_USERNAME}!",
+
+    f"🏆 PLAY CONSISTENTLY! Deposit often → Win more → Cashout BIG! 💰\n\n"
+    f"💬 Help? Message @{SUPPORT_USERNAME}!"
 ]
 
+# ===== BROADCAST SYSTEM =====
+class BroadcastSystem:
+    def __init__(self):
+        self.message_index = 0
+        self.is_active = True
+        self.min_delay = 3600  # 1 hour
+        self.max_delay = 14400  # 4 hours
+        self.last_sent = None
+
+    async def broadcast_messages(self, context: ContextTypes.DEFAULT_TYPE):
+        """Send promotional messages to all interacted users"""
+        if not self.is_active or not interacted_users:
+            return
+
+        # Format message with support username
+        message = PROMOTIONAL_MESSAGES[self.message_index].format(
+            support_username=SUPPORT_USERNAME
+        )
+
+        # Send to all users
+        failed_users = set()
+        for user_id in list(interacted_users):
+            try:
+                await context.bot.send_message(
+                    chat_id=user_id,
+                    text=f"🎉 SPECIAL OFFER 🎉\n\n{message}\n\n{SUPPORT_URL}"
+                )
+                logger.info(f"Broadcast sent to {user_id}")
+                # Add delay to prevent flooding
+                await asyncio.sleep(0.1)
+            except Exception as e:
+                logger.warning(f"Failed broadcast to {user_id}: {str(e)}")
+                failed_users.add(user_id)
+
+        # Remove failed users
+        interacted_users.difference_update(failed_users)
+
+        # Update index and timestamp
+        self.message_index = (self.message_index + 1) % len(PROMOTIONAL_MESSAGES)
+        self.last_sent = datetime.datetime.now()
+        logger.info(f"Completed broadcast cycle. Next message: {self.message_index}")
+
+        # Schedule next broadcast with random delay
+        delay = random.randint(self.min_delay, self.max_delay)
+        context.job_queue.run_once(
+            lambda ctx: self.broadcast_messages(ctx),
+            delay
+        )
+        logger.info(f"Next broadcast scheduled in {delay // 3600} hours")
+
+
+# Initialize broadcast system
+broadcast_system = BroadcastSystem()
 
 # ===== USER TRACKING =====
 def track_user(user_id: int):
@@ -870,11 +1003,16 @@ def main():
 
     # Schedule promotional messages if job queue exists
     if job_queue:
+
         # Schedule promotional messages with random intervals
         job_queue.run_repeating(
             send_promotional_message,
-            interval=random.randint(1800, 7200),  # 30-120 minutes
-            first=10
+            job_queue.run_repeating(
+                send_promotional_message,
+                interval=8 * 60 * 60,  # 8 hours
+                first=30
+            )
+
         )
 
         # Schedule daily stats report
