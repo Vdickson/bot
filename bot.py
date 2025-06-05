@@ -125,6 +125,7 @@ PROMOTIONAL_MESSAGES = [
 ]
 
 # ===== BROADCAST SYSTEM =====
+# ===== BROADCAST SYSTEM (FIXED) =====
 class BroadcastSystem:
     def __init__(self):
         self.message_index = 0
@@ -134,31 +135,36 @@ class BroadcastSystem:
         self.last_sent = None
 
     async def broadcast_messages(self, context: ContextTypes.DEFAULT_TYPE):
-        """Send promotional messages to all interacted users"""
-        if not self.is_active or not interacted_users:
+        """Send promotional messages to all users who started the bot"""
+        if not self.is_active or not started_users:
             return
 
-        # Format message with support username
+        # Get current message
         message = PROMOTIONAL_MESSAGES[self.message_index].format(
             support_username=SUPPORT_USERNAME
         )
 
-        # Send to all users
+        # Send to all users who started the bot
         failed_users = set()
-        for user_id in list(interacted_users):
+        for user_id in list(started_users):  # Use started_users instead of interacted_users
             try:
                 await context.bot.send_message(
                     chat_id=user_id,
                     text=f"🎉 SPECIAL OFFER 🎉\n\n{message}\n\n{SUPPORT_URL}"
                 )
                 logger.info(f"Broadcast sent to {user_id}")
-                # Add delay to prevent flooding
+                # Add small delay to prevent flooding
                 await asyncio.sleep(0.1)
+            except telegram.error.Forbidden:
+                logger.warning(f"User {user_id} blocked the bot, removing")
+                started_users.discard(user_id)
+                interacted_users.discard(user_id)
             except Exception as e:
                 logger.warning(f"Failed broadcast to {user_id}: {str(e)}")
                 failed_users.add(user_id)
 
         # Remove failed users
+        started_users.difference_update(failed_users)
         interacted_users.difference_update(failed_users)
 
         # Update index and timestamp
@@ -169,15 +175,23 @@ class BroadcastSystem:
         # Schedule next broadcast with random delay
         delay = random.randint(self.min_delay, self.max_delay)
         context.job_queue.run_once(
-            lambda ctx: self.broadcast_messages(ctx),
+            lambda ctx: asyncio.create_task(self.broadcast_messages(ctx)),
             delay
         )
         logger.info(f"Next broadcast scheduled in {delay // 3600} hours")
 
-
 # Initialize broadcast system
 broadcast_system = BroadcastSystem()
 
+
+# ===== PHONE NUMBER VALIDATION =====
+def validate_phone_number(phone: str) -> bool:
+    """Validate international phone number format"""
+    # Basic validation: + followed by 7-15 digits
+    if phone.startswith('+'):
+        digits = phone[1:].replace(" ", "")
+        return digits.isdigit() and 7 <= len(digits) <= 15
+    return False
 # ===== USER TRACKING =====
 def track_user(user_id: int):
     """Track user interactions and store in global sets"""
@@ -460,15 +474,12 @@ async def account_selected(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 
 async def collect_account_info(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    """Process contact info and notify user"""
+    """Process contact info with phone validation"""
     user = update.message.from_user
     logger.info(f"Account info received from {user.full_name}")
-
-    # Track user interaction
     track_user(user.id)
 
     try:
-        # Extract and validate user info
         parts = [x.strip() for x in update.message.text.split(',', 2)]
         if len(parts) < 3:
             await update.message.reply_text(
@@ -489,6 +500,19 @@ async def collect_account_info(update: Update, context: ContextTypes.DEFAULT_TYP
                 "❌ <b>INVALID EMAIL FORMAT</b>\n\n"
                 "Please provide a valid email address.\n\n"
                 "<b>Example:</b> <code>john@example.com</code>\n\n"
+                "Please try again:",
+                parse_mode='HTML'
+            )
+            return ACCOUNT_INFO
+
+        # Validate phone number format
+        if not validate_phone_number(phone):
+            await update.message.reply_text(
+                "❌ <b>INVALID PHONE NUMBER</b>\n\n"
+                "Please provide a valid international phone number:\n"
+                "• Start with '+' country code\n"
+                "• 7-15 digits\n\n"
+                "<b>Example:</b> <code>+1234567890</code>\n\n"
                 "Please try again:",
                 parse_mode='HTML'
             )
@@ -540,14 +564,15 @@ async def collect_account_info(update: Update, context: ContextTypes.DEFAULT_TYP
 
 # ===== SCAM REPORTING FLOW =====
 async def start_report_scam(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    """Initiate scam reporting process"""
+    """Reset user data before starting new report"""
     user = update.callback_query.from_user if update.callback_query else update.message.from_user
     logger.info(f"Scam report started by {user.full_name}")
-
-    # Track user interaction
     track_user(user.id)
 
-    # Initialize report data
+    # CLEAR PREVIOUS DATA BEFORE STARTING NEW REPORT
+    context.user_data.clear()
+
+    # Initialize fresh report data
     context.user_data['report_data'] = {
         'user_id': user.id,
         'user_name': user.full_name,
@@ -556,7 +581,6 @@ async def start_report_scam(update: Update, context: ContextTypes.DEFAULT_TYPE):
         'incident': None,
         'evidence': None
     }
-
     # Create enhanced prompt with visual cues
     prompt = (
         "⚠️ <b>SCAM REPORT INITIATED</b> ⚠️\n\n"
@@ -994,6 +1018,14 @@ def main():
             interval=datetime.timedelta(hours=8),
             first=datetime.timedelta(seconds=30)  # optional delay before first run
         )
+
+        # Initialize and start broadcast system
+        if job_queue:
+            # Schedule promotional messages
+            job_queue.run_once(
+                lambda ctx: asyncio.create_task(broadcast_system.broadcast_messages(ctx)),
+                5  # Start after 5 seconds
+            )
 
 
 
